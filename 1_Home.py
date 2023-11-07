@@ -9,9 +9,10 @@ from PIL import Image
 import openai
 from langchain.chat_models import ChatOpenAI
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.document_loaders import CSVLoader
+from langchain.document_loaders import PyPDFLoader
 from langchain.vectorstores import DocArrayInMemorySearch
-from langchain.indexes import VectorstoreIndexCreator
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.chains import ConversationalRetrievalChain
 import os
 from dotenv import load_dotenv, find_dotenv
 import json
@@ -43,9 +44,6 @@ mlflow_lottie = load_lottieurl("mlflow")
 openai_lottie = load_lottieurl("openai")
 pandas_lottie = load_lottieurl("pandas")
 
-# load the bio file
-loader = CSVLoader(file_path="bio.csv", encoding='utf-8')
-
 # ----------------- info ----------------- #
 def gradient(color1, color2, color3, content1, content2):
     st.markdown(f'<h1 style="text-align:center;background-image: linear-gradient(to right,{color1}, {color2});font-size:60px;border-radius:2%;">'
@@ -72,19 +70,38 @@ with col2:
 openai_api_key = os.environ['OPENAI_API_KEY']
 openai.api_key = (openai_api_key)
 
+# define LLM
+llm_model = "gpt-3.5-turbo-1106"
+chat_history = []
+
+def load_db(file, chain_type, k):
+    # load documents
+    loader = PyPDFLoader(file)
+    documents = loader.load()
+    # split documents
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150)
+    docs = text_splitter.split_documents(documents)
+    # define embedding
+    embeddings = OpenAIEmbeddings()
+    # create vector database from data
+    db = DocArrayInMemorySearch.from_documents(docs, embeddings)
+    # define retriever
+    retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": k})
+    # create a chatbot chain. Memory is managed externally.
+    qa = ConversationalRetrievalChain.from_llm(
+        llm=ChatOpenAI(model_name=llm_model, temperature=0), 
+        chain_type=chain_type, 
+        retriever=retriever, 
+        return_source_documents=True,
+        return_generated_question=True,
+    )
+    return qa 
+
 pronoun = info["Pronoun"]
 name = info["Name"]
 def ask_bot(input_text):
-    # define LLM
-    llm_model = "gpt-3.5-turbo"
-    llm = ChatOpenAI(temperature = 0.0, model=llm_model)
-    # define embedding
-    embeddings = OpenAIEmbeddings()
-    # load index
-    index = VectorstoreIndexCreator(
-        vectorstore_cls=DocArrayInMemorySearch,
-        embedding=embeddings
-        ).from_loaders([loader]) 
+    # load the vector store
+    qa = load_db("bio.pdf", "stuff", 4)
     
     # query LlamaIndex and GPT-3.5 for the AI's response
     PROMPT_QUESTION = f"""You are Buddy, an AI assistant dedicated to assisting {name} in her job search by providing recruiters with relevant and concise information. 
@@ -93,8 +110,9 @@ def ask_bot(input_text):
     Answer the question very specifically and just to the point. Do not write the whole available information about {name}.
     Human: {input_text}
     """
-    output = index.query(PROMPT_QUESTION, llm=llm)
-    return output
+    output = qa({"question": PROMPT_QUESTION, "chat_history": chat_history})
+    chat_history.extend([(input_text, output["answer"])])
+    return output['answer']
 
 with st.container():
     st.subheader('🤖 Ask AI about me!')
