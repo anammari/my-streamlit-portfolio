@@ -1,0 +1,223 @@
+{
+    "title": {
+        "media": {
+            "url": "https://i.imgur.com/9yvvFCc.jpg",
+            "caption": " <a target=\"_blank\" href=''>credits</a>",
+            "credit": ""
+        },
+        "text": {
+            "headline": "Welcome to my<br>Work History Timeline",
+            "text": "<p>This is Streamlit Timeline component to demonstrate my work history.</p>"
+        }
+    },
+    "events": [
+        {
+            "media": {
+                "url": "https://i.imgur.com/cqIwUCb.jpg",
+                "caption": "Curio Group, Melbourne, Australia"
+            },
+            "start_date": {
+                "year": "2023"
+            },
+            "end_date": {
+                "year": "2024"
+            },
+            "text": {
+                "headline": "Advanced Analytics Course Facilitator",
+                "text": "<ul><li>Design and lead interactive advanced analytics courses with live sessions, comprehensive materials, and personalized feedback.</li><li>Guide students through data analysis concepts and sought-after analytics skills using a learner-focused approach.</li><li>Incorporate teaching content related to data science and machine learning, including Python, statistical analysis, and data analysis.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/FJWL0UO.jpg",
+                "caption": "University of Melbourne, Melbourne, Australia"
+            },
+            "start_date": {
+                "year": "2022"
+            },
+            "end_date": {
+                "year": "2023"
+            },
+            "text": {
+                "headline": "Data Scientist & NLP Developer",
+                "text": "<ul><li>Designed and deployed NLP modules for validating Behaviour Support Plans using AWS SageMaker.</li><li>Contributed to an AI-based Learning Management system providing feedback to NDIS practitioners.</li><li>Collaborated with researchers on an AI product for NDIS trials.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/agZ86tl.jpg",
+                "caption": "RACV, Melbourne, Australia"
+            },
+            "start_date": {
+                "year": "2021"
+            },
+            "end_date": {
+                "year": "2022"
+            },
+            "text": {
+                "headline": "Senior Data Scientist",
+                "text": "<ul><li>Migrated ML models from SAS to Python/R and built churn reduction models.</li><li>Personalized insurance products with data science and Next Best Offer models.</li><li>Productionized ML pipelines on Microsoft Azure.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/3IqMfiL.jpg",
+                "caption": "Deakin University, Geelong, Australia"
+            },
+            "start_date": {
+                "year": "2018"
+            },
+            "end_date": {
+                "year": "2021"
+            },
+            "text": {
+                "headline": "Data Scientist",
+                "text": "<ul><li>Developed AI and ML models to improve the Deakin Genie chatbot using AWS SageMaker.</li><li>Analyzed and deployed models predicting student attrition using Spark and AWS.</li><li>Implemented a Topic Recommender System based on Event Stream Processing.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/zlodu0o.png",
+                "caption": "Tribal Group, Geelong, Australia"
+            },
+            "start_date": {
+                "year": "2017"
+            },
+            "end_date": {
+                "year": "2018"
+            },
+            "text": {
+                "headline": "Data Scientist",
+                "text": "<ul><li>Developed predictive models for student withdrawal and progression.</li><li>Built data pipelines for learning analytics.</li><li>Created Docker models for anonymization, testing, and QA.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/T6rhFir.jpg",
+                "caption": "Hello Soda, Manchester, UK"
+            },
+            "start_date": {
+                "year": "2016"
+            },
+            "end_date": {
+                "year": "2017"
+            },
+            "text": {
+                "headline": "NLP Engineer",
+                "text": "<ul><li>Developed NLP models for user profiling, using deep learning and ML to predict gender, jobs, and life events from social media.</li><li>Created Docker-based pipelines for aggregating, processing, and analyzing large volumes of unstructured data.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/GIZsOyx.png",
+                "caption": "University of Wolverhampton, West Midlands, UK"
+            },
+            "start_date": {
+                "year": "2016"
+            },
+            "end_date": {
+                "year": "2016"
+            },
+            "text": {
+                "headline": "Research Assistant",
+                "text": "<ul><li>Analyzed Twitter data for traffic forecasting as part of the EU OPTIMUM project.</li><li>Used NLP and ML to identify relevant tweets and sentiments about UK traffic.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/BHuN4ci.jpg",
+                "caption": "eRevalue, London, UK"
+            },
+            "start_date": {
+                "year": "2015"
+            },
+            "end_date": {
+                "year": "2015"
+            },
+            "text": {
+                "headline": "Senior Data Scientist",
+                "text": "<ul><li>Analyzed social media to identify insights for corporate sustainability.</li><li>Lead projects uncovering sustainability topics from Twitter.</li><li>Built products to stream and analyze real-time social media.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/GT6tPla.jpg",
+                "caption": "Higher Colleges of Technology, Dubai, UAE"
+            },
+            "start_date": {
+                "year": "2012"
+            },
+            "end_date": {
+                "year": "2014"
+            },
+            "text": {
+                "headline": "IT Faculty",
+                "text": "<ul><li>Taught IT courses using student-centered and online learning approaches.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/RDi9HPA.png",
+                "caption": "University of Leeds, Leeds, UK"
+            },
+            "start_date": {
+                "year": "2011"
+            },
+            "end_date": {
+                "year": "2012"
+            },
+            "text": {
+                "headline": "Research Fellow",
+                "text": "<ul><li>Developed semantic ML models to derive user profiles from social media.</li><li>Created ML approaches to improve collaboration and group decisions.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/5BPgNNv.png",
+                "caption": "Peerius, London, UK"
+            },
+            "start_date": {
+                "year": "2010"
+            },
+            "end_date": {
+                "year": "2010"
+            },
+            "text": {
+                "headline": "Data Analyst & Data Miner",
+                "text": "<ul><li>Applied data mining to design and develop recommendation systems.</li><li>Extensive data mining programming using SQL Server, TSQL and DMX.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/HkY5N3K.jpg",
+                "caption": "University of Bradford, UK"
+            },
+            "start_date": {
+                "year": "2010"
+            },
+            "end_date": {
+                "year": "2010"
+            },
+            "text": {
+                "headline": "Java Programming Lab Demonstrator",
+                "text": "<ul><li>Assisted students during Java lab sessions.</li><li>Provided troubleshooting for Java programming assignments.</li><li>Helped enhance curriculum and lab materials.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/QMvuqPe.jpg",
+                "caption": "Emirates College of Technology, Abu Dhabi"
+            },
+            "start_date": {
+                "year": "2005"
+            },
+            "end_date": {
+                "year": "2008"
+            },
+            "text": {
+                "headline": "IT Faculty Coordinator & Instructor",
+                "text": "<ul><li>Taught a variety of IT courses over 10 semesters.</li><li>Led curriculum development and authored new programs.</li></ul>"
+            }
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+About Ahmad:
+Ahmad is an accomplished data science and AI professional with 10 years of experience applying advanced analytics and machine learning techniques to drive impact for organizations. Armed with a PhD in Computing and Mathematics from the University of Bradford (2010), Ahmad is passionate about utilizing the latest innovations in AI and data science to unlock transformational business value.
+
+Work Experience:  
+Advanced Analytics Course Facilitator - Curio Group (2023-Present), Data Scientist & NLP Developer - University of Melbourne (2022-2023), Senior Data Scientist - RACV (2021-2022), Data Scientist - Deakin University (2018-2021), Research Assistant - University of Wolverhampton (2016), Data Scientist - Tribal Group (2017-2018), NLP Engineer - Hello Soda (2016-2017).
+
+Projects:
+- (June 2023) Smarter Support Plans: AI-Powered NLP for NDIS Practitioners: An AI assistant that helps NDIS practitioners write better behavior support plans using NLP and LLM.
+- (July 2023) Upskilling Behavioral Support with AI-Powered Writing Assistant: An AI writing assistant that improves practitioners' behavior support plan writing skills using NLP and feedback.
+- (August 2023) AI-Powered Data Generator for NLP Model Building: An automated framework that creates and validates synthetic datasets for training NLP models for behavior support plans.
+- (September 2023) Intelligent BSP Assistant - Your 24/7 Planning Expert: An AI-powered chatbot that answers questions about behavior support plans and NLP topic detection.
+- (January 2024) Microscope AI: Classifying Tiny Images with Computer Vision: A deep neural network that classifies tiny images into 20 categories using TensorFlow, AWS, and TaiPy.
+- (October 2023) Intelligent Wine Grader: Assessing Quality with ML: A machine learning model that predicts wine quality scores from chemical properties using Scikit-Learn, Docker, and Amazon Lightsail.
+- (May 2023) DC Fare Forecaster: Streamlining Taxi Prediction with MLOps: An automated ML pipeline that estimates DC taxi fares using location coordinates and MLOps tools such as MLFlow, Docker, AWS, Grafana, Prefect, Terraform, and Evidently.
+- (March 2023) FlightQuest: Navigating Delays with Data Pipelines: An automated data pipeline that ingests, processes, and analyzes US flight data for predicting delays using GCP tools such as BigQuery, Dataproc, Cloud Run, GitHub Actions.
+- (September 2022) DocVision: Unlocking Text from Documents with Computer Vision: A Faster R-CNN model that detects and extracts key text sections in complex documents using PyTorch, model evaluation, and deployment.
+
+Career Goal:  
+Ahmad's goal is to continue pioneering cutting-edge applications of data science, machine learning, and natural language processing that solve complex business challenges and enable data-driven decision making.
+
+Skills:
+Statistical Modeling, Predictive Analytics, Machine Learning, Data Mining, NLP, AWS, Azure, Python, R, SQL, NoSQL, Spark, TensorFlow, PyTorch, Pandas, Matplotlib, GCP, Docker, Kafka, LLMs, AI. 
+
+Certifications:
+Microsoft Certified Azure AI Engineer Associate, Microsoft.
+Data Science Specialization, Coursera.
+AI for Medicine Specialization, Coursera. 
+Neural Networks and Deep Learning, Coursera.
+Machine Learning, Stanford University, Coursera.
+Machine Learning Operations (ML Ops) Zoomcamp, DataTalks. 
+Sun Certified Java Programmer, Oracle.
+Oracle PL/SQL Certified, Oracle.
+
+Achievements:
+Reduced member churn by 10% at RACV through predictive modeling. Prototyped an AI-powered chatbot improving student engagement at Deakin University. Published 14 peer-reviewed papers on text mining, user modeling, semantics, and responsible AI. Pioneered state-of-the-art in NLP-driven social media analytics for intelligent traffic forecasting.
+
+Contact:  
+Email: ammariect@gmail.com. Phone: +61 4 78744174. Location: Geelong, VIC, Australia.
+
+Strengths and Advantages:   
+Ahmad's strengths include his academic training, hands-on experience building end-to-end ML pipelines, ability to communicate analytical insights, and passion for staying on top of innovations in data science and AI.
+
+Weaknesses and Disadvantages:  
+Ahmad's perfectionism means he sometimes spends more time fine-tuning models than moving to deployment. He actively works on balancing model performance with business needs.
+
+Interests and Hobbies:   
+Outside of crunching data, Ahmad enjoys soccer, tennis, and reading about history and philosophy. He also enjoys traveling, swimming, and chess.
+
+Availability:   
+Ahmad is actively seeking new data science, machine learning engineering, and AI opportunities and is available immediately.  
+
+Expected Salary:
+As a Senior Data Scientist with 10 years of experience, the average salary range is between $120,000 - $160,000 per year according to PayScale.
+As an experienced contractor, your hourly rate is estimated to be $120 - $200 per hour.
+For a non-profit or academic role, the salary range might be $100,000 - $140,000.
+
+References:   
+Available upon request.

@@ -1,0 +1,15 @@
+# API Key file
+.env
+
+# Python init and cache files
+__init__.py
+__pycache__
+
+# virtual environment
+myenv
+
+# temporary images
+temp_img
+
+# Docker image
+Dockerfile
