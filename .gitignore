@@ -5,6 +5,9 @@
 __init__.py
 __pycache__
 
+# Test files
+pages/test.ipynb
+
 # virtual environment
 myenv
 

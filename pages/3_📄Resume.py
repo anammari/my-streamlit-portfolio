@@ -12,6 +12,8 @@ local_css("style/styles_main.css")
     
 # get the variables from constants.py
 pronoun = info['Pronoun']
+name = info['Name']
+subject = info['Subject']
 full_name = info['Full_Name']
 
 # app sidebar
@@ -19,13 +21,14 @@ with st.sidebar:
     st.markdown("""
                 # Chat with my AI assistant
                 """)
-    with st.expander("Click here to see example questions"):
+    with st.expander("Click here to see FAQs"):
         st.info(
             f"""
+            - Tell me a brief about {name}. 
+            - What does {subject} currently work?
             - What are {pronoun} strengths and weaknesses?
-            - What is {pronoun} expected salary?
             - What is {pronoun} latest project?
-            - When can {pronoun} start to work?
+            - When can {subject} start to work?
             - Tell me about {pronoun} professional background
             - What is {pronoun} skillset?
             - What is {pronoun} contact?

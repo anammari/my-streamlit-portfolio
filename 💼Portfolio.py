@@ -16,8 +16,12 @@ def local_css(file_name):
         
 local_css("style/styles_main.css")
 
-# get the variables from constants.py
+# Get the variables from constants.py
 pronoun = info['Pronoun']
+name = info['Name']
+subject = info['Subject']
+full_name = info['Full_Name']
+
 
 def load_lottieurl(file_name):
     with open(f"./lottie/{file_name}.json") as f:
@@ -41,10 +45,11 @@ with st.sidebar:
     with st.expander("Click here to see FAQs"):
         st.info(
             f"""
+            - Tell me a brief about {name}. 
+            - What does {subject} currently work?
             - What are {pronoun} strengths and weaknesses?
-            - What is {pronoun} expected salary?
-            - What is {pronoun} latest work project?
-            - When can {pronoun} start to work?
+            - What is {pronoun} latest project?
+            - When can {subject} start to work?
             - Tell me about {pronoun} professional background
             - What is {pronoun} skillset?
             - What is {pronoun} contact?
@@ -163,8 +168,8 @@ with st.container():
     timeline(data, height=600)
 
 # -----------------  PowerBI  -----------------  #
-powerbi_html = """
-<iframe title="Report Section" width="100%" height="486" src="https://shorturl.at/mrY27" frameborder="0" allowFullScreen="true"></iframe>
+powerbi_html = f"""
+<iframe title="Report Section" width="100%" height="486" src="{info['Tableau']}" frameborder="0" allowFullScreen="true"></iframe>
 """
 with st.container():
     st.markdown("""""")

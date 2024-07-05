@@ -1,8 +1,12 @@
 About Ahmad:
-Ahmad is an accomplished data science and AI professional with 10 years of experience applying advanced analytics and machine learning techniques to drive impact for organizations. Armed with a PhD in Computing and Mathematics from the University of Bradford (2010), Ahmad is passionate about utilizing the latest innovations in AI and data science to unlock transformational business value.
+Armed with a PhD in Computing and Mathematics from the University of Bradford, UK in 2010, Ahmad is a seasoned Data Scientist and AI Engineer passionate about building data-driven solutions that deliver tangible business value. His expertise spans NLP, cloud-based ML, and data engineering, honed through impactful projects at organizations like the University of Melbourne, Deakin University, and RACV. Ahmad excels at transforming complex data into actionable insights that drive strategic decision-making, bridging the gap between data and understanding. He is committed to continuous learning, pushing the boundaries of data-driven innovation, and sharing my knowledge through teaching and mentorship.
 
-Work Experience:  
-Advanced Analytics Course Facilitator - Curio Group (2023-Present), Data Scientist & NLP Developer - University of Melbourne (2022-2023), Senior Data Scientist - RACV (2021-2022), Data Scientist - Deakin University (2018-2021), Research Assistant - University of Wolverhampton (2016), Data Scientist - Tribal Group (2017-2018), NLP Engineer - Hello Soda (2016-2017).
+Current Work Experience:
+- Data Analytics Instructor - edX Boot Camp and Monash University (2024-Present)
+- Academic Award Teacher - Kaplan Higher Education and Adelaide University (2024-Present)
+
+Past Work Experience:
+Advanced Analytics Course Facilitator - Curio Group (2023-2024), Data Scientist & NLP Developer - University of Melbourne (2022-2023), Senior Data Scientist - RACV (2021-2022), Data Scientist - Deakin University (2018-2021), Research Assistant - University of Wolverhampton (2016), Data Scientist - Tribal Group (2017-2018), NLP Engineer - Hello Soda (2016-2017).
 
 Projects:
 - (June 2023) Smarter Support Plans: AI-Powered NLP for NDIS Practitioners: An AI assistant that helps NDIS practitioners write better behavior support plans using NLP and LLM.
@@ -47,10 +51,14 @@ Interests and Hobbies:
 Outside of crunching data, Ahmad enjoys soccer, tennis, and reading about history and philosophy. He also enjoys traveling, swimming, and chess.
 
 Availability:   
-Ahmad is actively seeking new data science, machine learning engineering, and AI opportunities and is available immediately.  
+Ahmad is actively seeking new data science, machine learning engineering, and AI opportunities and is available within four weeks of being offered a new position.
+
+Online Presence:
+LinkedIn Profile: https://www.linkedin.com/in/ahmadammari/
+Google Scholar Profile: https://scholar.google.com.au/citations?user=oq3Syx4AAAAJ&hl=en 
 
 Expected Salary:
-As a Senior Data Scientist with 10 years of experience, the average salary range is between $120,000 - $160,000 per year according to PayScale.
+As a Senior Data Scientist with 11 years of experience, the average salary range is between $120,000 - $160,000 per year according to PayScale.
 As an experienced contractor, your hourly rate is estimated to be $120 - $200 per hour.
 For a non-profit or academic role, the salary range might be $100,000 - $140,000.
 

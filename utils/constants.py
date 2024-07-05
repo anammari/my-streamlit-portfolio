@@ -38,14 +38,14 @@ info = {
    "Subject": "he", 
    "Name": "Ahmad",
    "Full_Name":"Ahmad Ammari", 
-   "Intro": "A Data Scientist and Course Facilitator at Curio Group",
-   "About":"Hi there! I'm Ahmad, a data science and course facilitator with 10 years of experience applying advanced analytics, machine learning, and AI to uncover impactful insights 📈. I'm excited to continue pursuing innovative applications of data science and advanced analytics that drive measurable business value 🚀",
+   "Intro": "A Data Analytics Professional and Educator",
+   "About":"Hi there! I'm Ahmad, a Data Scientist and Analytics Instructor with 11+ years of experience uncovering actionable insights from complex datasets. My expertise spans NLP, data visualization, and machine learning, utilizing tools like Python, Azure ML, and Power BI. Passionate about bridging the gap between data and understanding, I also share my knowledge through teaching and mentorship.",
    "Project":"https://www.linkedin.com/in/ahmadammari/",
    "Medium":"https://www.slideshare.net/anammari/presentations",
-   "Tableau":"https://shorturl.at/mrY27",
+   "Tableau":"https://shorturl.at/SC35O",
    "ScreenPal":"https://screenpal.com/watch/c0XefrVE9SH",
    "City":"Geelong, Victoria, Australia",
-   "Resume": "https://1drv.ms/b/s!Al2NRkt-k1gkh4tFzCuGQK1Vh40bcA?e=PTUQ4c",
+   "Resume": "https://shorturl.at/BwMZm",
    "Email": "ammariect@gmail.com" 
 }
 

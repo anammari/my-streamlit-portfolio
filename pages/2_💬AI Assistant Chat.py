@@ -3,8 +3,8 @@ from utils.constants import *
 import torch
 from llama_index import (GPTVectorStoreIndex, SimpleDirectoryReader, LLMPredictor, 
                          ServiceContext)
+from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from llama_index.embeddings import LangchainEmbedding
-from langchain.embeddings import HuggingFaceInstructEmbeddings
 from ibm_watson_machine_learning.foundation_models.extensions.langchain import WatsonxLLM
 from ibm_watson_machine_learning.foundation_models.utils.enums import ModelTypes, DecodingMethods
 from ibm_watson_machine_learning.metanames import GenTextParamsMetaNames as GenParams
@@ -30,18 +30,19 @@ full_name = info['Full_Name']
 if "messages" not in st.session_state:
     welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
     st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
-    
+
 # App sidebar
 with st.sidebar:
     st.markdown("""
                 # Chat with my AI assistant
                 """)
-    with st.expander("Click here to see example questions"):
+    with st.expander("Click here to see FAQs"):
         st.info(
             f"""
+            - Tell me a brief about {name}. 
+            - What does {subject} currently work?
             - What are {pronoun} strengths and weaknesses?
-            - What is {pronoun} expected salary?
-            - What is {pronoun} latest work project?
+            - What is {pronoun} latest project?
             - When can {subject} start to work?
             - Tell me about {pronoun} professional background
             - What is {pronoun} skillset?
@@ -60,8 +61,8 @@ with st.sidebar:
             mime='json',
         )
 
-    st.caption(f"© Made by {full_name} 2024. All rights reserved.")
-    
+    st.caption(f"© Made by {full_name} 2023. All rights reserved.")
+
 with st.spinner("Initiating the AI assistant. Please hold..."):
     # Check for GPU availability and set the appropriate device for computation.
     DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -126,12 +127,13 @@ with st.spinner("Initiating the AI assistant. Please hold..."):
     )      
     # build index
     index = GPTVectorStoreIndex.from_documents(documents, service_context=service_context)
-    
+
 def ask_bot(user_query):
+
     global index
 
     PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting {name} in {pronoun} job search by providing recruiters with relevant information about {pronoun} qualifications and achievements. 
-    Your goal is to support {name} in presenting {pronoun}self effectively to potential employers and promoting {pronoun} candidacy for job opportunities.
+    Your goal is to support {name} in presenting {pronoun} self effectively to potential employers and promoting {pronoun} candidacy for job opportunities.
     If you do not know the answer, politely admit it and let recruiters know how to contact {name} to get more information directly from {pronoun}. 
     Don't put "Buddy" or a breakline in the front of your answer.
     Human: {input}
@@ -158,10 +160,12 @@ if st.session_state.messages[-1]["role"] != "assistant":
             st.write(response.response)
             message = {"role": "assistant", "content": response.response}
             st.session_state.messages.append(message) # Add response to message history
+
 # Suggested questions
 questions = [
-    f'What are {pronoun} strengths and weaknesses?',
-    f'What is {pronoun} latest work project?',
+    f'Tell me a brief about {name}',
+    f'What does {subject} currently work?',
+    f'What certifications does {subject} have?',
     f'When can {subject} start to work?'
 ]
 
@@ -183,3 +187,4 @@ if st.session_state['disabled']==False:
         if n == 0:
             for q in questions:
                 button_ques = buttons.button(label=q, on_click=send_button_ques, args=[q], disabled=st.session_state.disabled)
+
