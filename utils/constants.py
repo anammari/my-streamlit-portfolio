@@ -42,37 +42,19 @@ info = {
    "About":"Hi there! I'm Ahmad, a Data Scientist and Analytics Instructor with 11+ years of experience uncovering actionable insights from complex datasets. My expertise spans NLP, data visualization, and machine learning, utilizing tools like Python, Azure ML, and Power BI. Passionate about bridging the gap between data and understanding, I also share my knowledge through teaching and mentorship.",
    "Project":"https://www.linkedin.com/in/ahmadammari/",
    "Medium":"https://www.slideshare.net/anammari/presentations",
-   "Tableau":"https://shorturl.at/SC35O",
+   "Tableau":"https://shortit.me/4sf62",
    "ScreenPal":"https://screenpal.com/watch/c0XefrVE9SH",
    "City":"Geelong, Victoria, Australia",
-   "Resume": "https://shorturl.at/BwMZm",
+   "Resume": "https://shortit.me/2od45",
    "Email": "ammariect@gmail.com" 
 }
 
 projects = [
         {
-            "title": "Smarter Support Plans: AI-Powered NLP for NDIS Practitioners",
-            "description": "Leveraged NLP and LLM to build an AI assistant that detects quality markers and topics in behaviour support plans to upskill NDIS practitioners. Leveraged Azure OpenAI, HF transformers, Argilla data annotation, Qdrant vector stores, and Jupyter Voila. Use token 'huggingface' to access",
-            "image_url": "https://i.imgur.com/0A9qHzq.jpg",
-            "link": "https://aammari-jupyter-stacks-voila.hf.space/voila/render/nlp-demo-homepage.ipynb"
-        },
-        {
-            "title": "Upskilling Behavioral Support with AI-Powered Writing Assistant",
-            "description": "An AI writing assistant that uses natural language processing to guide and enhance practitioners' behavioral support plan authoring skills. Highlights key topics, provides targeted feedback, and promotes concise, structured writing. Leveraged Azure OpenAI, GPT-3.5 Turbo, and Gradio.",
-            "image_url": "https://i.imgur.com/vfMlf9p.jpg",
-            "link": "https://huggingface.co/spaces/aammari/ndis-uom-gradio-nlp-demo-hf"
-        },      
-        {
-            "title": "AI-Powered Data Generator for NLP Model Building",
-            "description": "An automated framework that leverages AI to generate customizable synthetic datasets, then refines the data through human-in-the-loop validation to train high-performance NLP models that enhance behavioral support plans. Leveraged Azure OpenAI, GPT-3.5 Turbo, LangChain, and Jupyter.",
-            "image_url": "https://i.imgur.com/P1HaPMd.jpg",
-            "link": "https://aammari-jupyter-stacks-voila-generate.hf.space/notebooks/generate-synthetic-label-feedback-ndis-demo.ipynb"
-        },
-        {
-            "title": "Intelligent BSP Assistant - Your 24/7 Planning Expert",
-            "description": "An AI-powered conversational agent that answers queries about behavioral support plans, quality markers, scoring models and NLP topic detection - providing anytime access to a knowledgeable planning advisor.",
-            "image_url": "https://i.imgur.com/8NOxuUj.jpg",
-            "link": "https://huggingface.co/spaces/aammari/NDIS-chatbot-hf"
+            "title": "BioMed AI Navigator - Your Intelligent Research Companion",
+            "description": "An advanced AI-powered assistant designed to simplify biomedical research by leveraging Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG). This tool provides instant answers to complex biomedical queries, summarizes research articles, recommends related studies, and offers conversational interaction to make navigating vast biomedical literature effortless and accessible for both experts and non-experts alike.",
+            "image_url": "https://i.imgur.com/rwUj6D3.jpg",
+            "link": "https://github.com/anammari/BioMedical-ai-assistant" 
         },
         {
             "title": "Microscope AI: Classifying Tiny Images with Computer Vision",

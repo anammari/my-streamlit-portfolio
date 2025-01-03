@@ -1,0 +1,72 @@
+About Ahmad:
+Armed with a PhD in Computing and Mathematics from the University of Bradford, UK in 2010, Ahmad is a seasoned Data Scientist and AI Engineer passionate about building data-driven solutions that deliver tangible business value. His expertise spans NLP, cloud-based ML, and data engineering, honed through impactful projects at organizations like the University of Melbourne, Deakin University, and RACV. Ahmad excels at transforming complex data into actionable insights that drive strategic decision-making, bridging the gap between data and understanding. He is committed to continuous learning, pushing the boundaries of data-driven innovation, and sharing my knowledge through teaching and mentorship.
+
+Current Work Experience:
+- Advanced Analytics Course Facilitator - Mentem UNSW (2023-Present)
+- Academic Award Teacher - Kaplan Higher Education (2024-Present)
+
+Past Work Experience:
+- Data Analytics & Visualization Instructor - edX Boot Camps (2024)
+- Data Scientist & NLP Developer - University of Melbourne (2022-2023)
+- Senior Data Scientist - RACV (2021-2022)
+- Data Scientist - Deakin University (2018-2021)
+- Data Scientist - Tribal Group (2017-2018)
+- NLP Engineer - Hello Soda (2016-2017)
+- Research Assistant - University of Wolverhampton (2016)
+- IT Lecturer & Faculty Coordinator - Emirates College of Technology (2005-2008).
+
+Projects:
+- (2023) AI-Powered NDIS BSP Assistant: Developed an AI tool leveraging Large Language Models (LLMs) like OpenAI GPT and Meta Llama to upskill NDIS practitioners in writing Behaviour Support Plans (BSPs) by analyzing and providing feedback on existing documents.
+- (2022) Azure Machine Learning Migration at RACV: Led the migration of SAS ML models to Azure, building customer propensity models that reduced member churn by 15% and increased cross-sell revenue by 20%.
+- (2021) Personalized Marketing with Customer Segmentation: Collaborated with RACV’s Leisure Team to build unsupervised learning models for customer segmentation, enabling personalized marketing campaigns.
+- (2020) Learning Analytics at Deakin University: Architected scalable ETL pipelines processing 100+ GB of learning data and developed predictive models to enhance student engagement and retention.
+- (2017) Social Media Analytics at Hello Soda: Applied NLP and machine learning to extract demographic insights from social media data, improving predictive modeling capabilities.
+
+Career Goal:  
+Ahmad's goal is to continue pioneering cutting-edge applications of data science, machine learning, and natural language processing that solve complex business challenges and enable data-driven decision making.
+
+Skills:
+Statistical Modeling, Predictive Analytics, Machine Learning, Data Mining, NLP, AWS, Azure, Python, R, SQL, NoSQL, Spark, TensorFlow, PyTorch, Pandas, Matplotlib, GCP, Docker, Kafka, LLMs, AI. 
+
+Certifications:
+- Microsoft Certified Fabric Analytics Engineer Associate
+- Microsoft Certified Azure AI Engineer Associate
+- Data Engineering Zoomcamp
+- Data Science Specialization
+- Designing and Implementing a Microsoft Azure AI Solution
+- AI for Medicine Specialization
+- Neural Networks and Deep Learning
+- Machine Learning (Stanford University)
+- Machine Learning Operations (ML Ops) Zoomcamp
+- Sun Certified Java Programmer
+- Oracle Certified PL/SQL Associate.
+
+Achievements:
+Reduced member churn by 15% and increased cross-sell revenue by 20% at RACV through predictive modeling. Developed AI-powered tools for NDIS practitioners, improving BSP writing skills. Published 14 peer-reviewed papers on text mining, user modeling, semantics, and responsible AI. Pioneered state-of-the-art in NLP-driven social media analytics for intelligent traffic forecasting.
+
+Contact:  
+Email: ammariect@gmail.com. Phone: +61 4 78744174. Location: Geelong, VIC, Australia.
+
+Strengths and Advantages:   
+Ahmad's strengths include his academic training, hands-on experience building end-to-end ML pipelines, ability to communicate analytical insights, and passion for staying on top of innovations in data science and AI.
+
+Weaknesses and Disadvantages:  
+Ahmad's perfectionism means he sometimes spends more time fine-tuning models than moving to deployment. He actively works on balancing model performance with business needs.
+
+Interests and Hobbies:   
+Outside of crunching data, Ahmad enjoys soccer, tennis, and reading about history and philosophy. He also enjoys traveling, swimming, and chess.
+
+Availability:   
+Ahmad is actively seeking new data science, machine learning engineering, and AI opportunities and is available within four weeks of being offered a new position.
+
+Online Presence:
+LinkedIn Profile: https://www.linkedin.com/in/ahmadammari/
+Google Scholar Profile: https://scholar.google.com.au/citations?user=oq3Syx4AAAAJ&hl=en 
+
+Expected Salary:
+As a Senior Data Scientist with 12 years of experience, the average salary range is between $130,000 - $170,000 per year according to PayScale.
+As an experienced contractor, your hourly rate is estimated to be $130 - $210 per hour.
+For a non-profit or academic role, the salary range might be $110,000 - $150,000.
+
+References:   
+Available upon request.

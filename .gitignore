@@ -6,7 +6,7 @@ __init__.py
 __pycache__
 
 # Test files
-pages/test.ipynb
+tests/*
 
 # virtual environment
 myenv
@@ -16,3 +16,7 @@ temp_img
 
 # Docker image
 Dockerfile
+
+# Prompts
+prompts/*
+.DS_Store

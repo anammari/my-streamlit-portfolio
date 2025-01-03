@@ -1,23 +1,33 @@
+import os
 import streamlit as st
 from utils.constants import *
-import torch
-from llama_index import (GPTVectorStoreIndex, SimpleDirectoryReader, LLMPredictor, 
-                         ServiceContext)
-from langchain_community.embeddings import HuggingFaceInstructEmbeddings
-from llama_index.embeddings import LangchainEmbedding
-from ibm_watson_machine_learning.foundation_models.extensions.langchain import WatsonxLLM
-from ibm_watson_machine_learning.foundation_models.utils.enums import ModelTypes, DecodingMethods
-from ibm_watson_machine_learning.metanames import GenTextParamsMetaNames as GenParams
-from ibm_watson_machine_learning.foundation_models import Model
-import os
+from llama_index.core import Settings
+from llama_index.llms.gemini import Gemini
+from llama_index.embeddings.gemini import GeminiEmbedding
+from llama_index.core import SimpleDirectoryReader, GPTVectorStoreIndex
 from dotenv import load_dotenv, find_dotenv
-_ = load_dotenv(find_dotenv()) #read local .env file
 
+# Load environment variables
+_ = load_dotenv(find_dotenv())  # read local .env file
+
+# Suppress logging warnings
+os.environ["GRPC_VERBOSITY"] = "ERROR"
+os.environ["GLOG_minloglevel"] = "2"
+
+# Ensure the API key is set correctly
+GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
+
+# Initialize the Gemini model and embeddings
+Settings.llm = Gemini(model='models/gemini-2.0-flash-exp', api_key=GOOGLE_API_KEY)
+Settings.embed_model = GeminiEmbedding()
+
+# Set up Streamlit app
 st.title("💬 Chat with My AI Assistant")
+
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
-        
+
 local_css("style/styles_chat.css")
 
 # Get the variables from constants.py
@@ -50,7 +60,7 @@ with st.sidebar:
             - What are {pronoun} achievements?
             """
         )
-    
+
     import json
     messages = st.session_state.messages
     if messages is not None:
@@ -61,75 +71,16 @@ with st.sidebar:
             mime='json',
         )
 
-    st.caption(f"© Made by {full_name} 2023. All rights reserved.")
+    st.caption(f"© Made by {full_name} 2025. All rights reserved.")
 
+# Load documents and build the index
 with st.spinner("Initiating the AI assistant. Please hold..."):
-    # Check for GPU availability and set the appropriate device for computation.
-    DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
-    
-    # Global variables
-    llm_hub = None
-    embeddings = None
-    
-    Watsonx_API = os.environ['WATSONX_API']
-    Project_id= os.environ['PROJECT_ID']
-
-    # Function to initialize the language model and its embeddings
-    def init_llm():
-        global llm_hub, embeddings
-        
-        params = {
-            GenParams.MAX_NEW_TOKENS: 512, # The maximum number of tokens that the model can generate in a single run.
-            GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
-            GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
-            GenParams.TEMPERATURE: 0.7,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
-            GenParams.TOP_K: 50,          # The top K parameter restricts the token generation to the K most likely tokens at each step, which can help to focus the generation and avoid irrelevant tokens.
-            GenParams.TOP_P: 1            # The top P parameter, also known as nucleus sampling, restricts the token generation to a subset of tokens that have a cumulative probability of at most P, helping to balance between diversity and quality of the generated text.
-        }
-        
-        credentials = {
-            'url': "https://us-south.ml.cloud.ibm.com",
-            'apikey' : Watsonx_API
-        }
-    
-        model_id = ModelTypes.LLAMA_2_70B_CHAT
-        
-        model = Model(
-            model_id= model_id,
-            credentials=credentials,
-            params=params,
-            project_id=Project_id)
-    
-        llm_hub = WatsonxLLM(model=model)
-    
-        #Initialize embeddings using a pre-trained model to represent the text data.
-        embeddings = HuggingFaceInstructEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": DEVICE}
-        )
-    
-    init_llm()
-    
-    # load the file
-    documents = SimpleDirectoryReader(input_files=["bio.txt"]).load_data()
-    
-    # LLMPredictor: to generate the text response (Completion)
-    llm_predictor = LLMPredictor(
-            llm=llm_hub
-    )
-                                    
-    # Hugging Face models can be supported by using LangchainEmbedding to convert text to embedding vector	
-    embed_model = LangchainEmbedding(embeddings)
-    
-    # ServiceContext: to encapsulate the resources used to create indexes and run queries    
-    service_context = ServiceContext.from_defaults(
-            llm_predictor=llm_predictor, 
-            embed_model=embed_model
-    )      
-    # build index
-    index = GPTVectorStoreIndex.from_documents(documents, service_context=service_context)
+    path = "data"
+    reader = SimpleDirectoryReader(path, recursive=True)
+    documents = reader.load_data()
+    index = GPTVectorStoreIndex.from_documents(documents)
 
 def ask_bot(user_query):
-
     global index
 
     PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting {name} in {pronoun} job search by providing recruiters with relevant information about {pronoun} qualifications and achievements. 
@@ -138,17 +89,18 @@ def ask_bot(user_query):
     Don't put "Buddy" or a breakline in the front of your answer.
     Human: {input}
     """
-    
-    # query LlamaIndex and LLAMA_2_70B_CHAT for the AI's response
-    output = index.as_query_engine().query(PROMPT_QUESTION.format(name=name, pronoun=pronoun, input=user_query))
-    return output
+
+    # Query the index for the AI's response
+    query_engine = index.as_query_engine()
+    response = query_engine.query(PROMPT_QUESTION.format(name=name, pronoun=pronoun, input=user_query))
+    return response
 
 # After the user enters a message, append that message to the message history
-if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
+if prompt := st.chat_input("Your question"):  # Prompt for user input and save to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
 # Iterate through the message history and display each message
-for message in st.session_state.messages: 
+for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
@@ -159,7 +111,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
             response = ask_bot(prompt)
             st.write(response.response)
             message = {"role": "assistant", "content": response.response}
-            st.session_state.messages.append(message) # Add response to message history
+            st.session_state.messages.append(message)  # Add response to message history
 
 # Suggested questions
 questions = [
@@ -172,19 +124,18 @@ questions = [
 def send_button_ques(question):
     st.session_state.disabled = True
     response = ask_bot(question)
-    st.session_state.messages.append({"role": "user", "content": question}) # display the user's message first
-    st.session_state.messages.append({"role": "assistant", "content": response.response}) # display the AI message afterwards
-    
+    st.session_state.messages.append({"role": "user", "content": question})  # display the user's message first
+    st.session_state.messages.append({"role": "assistant", "content": response.response})  # display the AI message afterwards
+
 if 'button_question' not in st.session_state:
     st.session_state['button_question'] = ""
 if 'disabled' not in st.session_state:
     st.session_state['disabled'] = False
-    
-if st.session_state['disabled']==False: 
+
+if st.session_state['disabled'] == False:
     for n, msg in enumerate(st.session_state.messages):
         # Render suggested question buttons
         buttons = st.container()
         if n == 0:
             for q in questions:
                 button_ques = buttons.button(label=q, on_click=send_button_ques, args=[q], disabled=st.session_state.disabled)
-

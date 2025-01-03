@@ -13,6 +13,38 @@
     "events": [
         {
             "media": {
+                "url": "https://i.imgur.com/bbLDwtJ.jpg",
+                "caption": "Kaplan Higher Education, Melbourne, Australia"
+            },
+            "start_date": {
+                "year": "2024"
+            },
+            "end_date": {
+                "year": "2025"
+            },
+            "text": {
+                "headline": "Academic Award Teacher",
+                "text": "<ul><li>Deliver high-quality instruction in data science and analytics, focusing on practical applications and real-world problem-solving.</li><li>Mentor students in advanced topics such as machine learning, statistical modeling, and data visualization.</li><li>Develop and update course materials to reflect the latest trends and technologies in data science and AI.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/b2VXG02.jpg",
+                "caption": "edX Boot Camps, Australia"
+            },
+            "start_date": {
+                "year": "2024"
+            },
+            "end_date": {
+                "year": "2024"
+            },
+            "text": {
+                "headline": "Data Analytics Instructor",
+                "text": "<ul><li>Lead immersive data analytics bootcamps, teaching students essential skills in Python, SQL, and data visualization tools.</li><li>Facilitate hands-on projects and case studies to help students apply theoretical knowledge to real-world datasets.</li><li>Provide career coaching and support to students, helping them transition into data-driven roles in various industries.</li></ul>"
+            }
+        },
+        {
+            "media": {
                 "url": "https://i.imgur.com/cqIwUCb.jpg",
                 "caption": "Curio Group, Melbourne, Australia"
             },

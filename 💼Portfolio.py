@@ -57,7 +57,7 @@ with st.sidebar:
             """
         )
         
-    st.caption(f"© Made by Ahmad Ammari 2024. All rights reserved.")
+    st.caption(f"© Made by Ahmad Ammari 2025. All rights reserved.")
 
 import requests
 
@@ -132,7 +132,7 @@ with st.container():
         for j, col in enumerate(columns):
             if i + j < len(projects):  # Check if project index is within range
                 display_project(col, projects[i + j])
-st.markdown(""" <a href={}> <em>👀 Click here to see more </a>""".format(info['Project']), unsafe_allow_html=True)
+st.markdown("""<a href="{}"><em>👀 Click here to see more</em></a>""".format(info['Project']), unsafe_allow_html=True)
     
 # ----------------- skillset ----------------- #
 with st.container():
@@ -189,8 +189,8 @@ with st.container():
                 """
             , height=486, width=1100, scrolling=True
             )
-    st.markdown(""" <a href={}> <em>🔗 Access Dashboard on the Web </a>""".format(info['Tableau']), unsafe_allow_html=True)
-    st.markdown(""" <a href={}> <em>👀 Watch a Dashboard Demo</a>""".format(info['ScreenPal']), unsafe_allow_html=True)
+    st.markdown("""<a href="{}"><em>🔗 Access Dashboard on the Web</em></a>""".format(info['Tableau']), unsafe_allow_html=True)
+    st.markdown("""<a href="{}"><em>👀 Watch a Dashboard Demo</em></a>""".format(info['ScreenPal']), unsafe_allow_html=True)
 
 # ----------------- slideshare ----------------- #
 with st.container():
@@ -198,7 +198,7 @@ with st.container():
     st.subheader('✍️ SlideShare')
     col1,col2 = st.columns([0.95, 0.05])
     components.html(embed_rss['rss'],height=300)
-    st.markdown(""" <a href={}> <em>👀 Click here to see more</a>""".format(info['Medium']), unsafe_allow_html=True)
+    st.markdown(""" <a href="{}"> <em>👀 Click here to see more</em></a>""".format(info['Medium']), unsafe_allow_html=True)
 
 st.write("---")
 with st.container():  

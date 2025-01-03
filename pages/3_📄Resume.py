@@ -36,7 +36,7 @@ with st.sidebar:
             """
         )
         
-    st.caption(f"© Made by {full_name} 2024. All rights reserved.")
+    st.caption(f"© Made by {full_name} 2025. All rights reserved.")
  
 st.title("📝 Resume")
 
