@@ -1,7 +1,7 @@
 [server]
 headless = true
 enableCORS = false
-main = "app.py"
+main = "💼Portfolio.py"
 
 [global]
 disableWidgetStateDuplicationWarning = false
