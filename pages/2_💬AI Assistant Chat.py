@@ -5,17 +5,21 @@ from llama_index.core import Settings
 from llama_index.llms.gemini import Gemini
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.core import SimpleDirectoryReader, GPTVectorStoreIndex
-from dotenv import load_dotenv, find_dotenv
+# Local env ONLY
+#from dotenv import load_dotenv, find_dotenv
 
-# Load environment variables
-_ = load_dotenv(find_dotenv())  # read local .env file
+# Local env ONLY
+#_ = load_dotenv(find_dotenv())  # read local .env file
 
 # Suppress logging warnings
 os.environ["GRPC_VERBOSITY"] = "ERROR"
 os.environ["GLOG_minloglevel"] = "2"
 
-# Ensure the API key is set correctly
-GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
+# Local env ONLY
+#GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
+
+# Streamlit cloud
+GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
 
 # Initialize the Gemini model and embeddings
 Settings.llm = Gemini(model='models/gemini-2.0-flash-exp', api_key=GOOGLE_API_KEY)
