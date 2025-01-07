@@ -5,6 +5,7 @@ from llama_index.core import Settings
 from llama_index.llms.gemini import Gemini
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.core import SimpleDirectoryReader, GPTVectorStoreIndex
+import google.generativeai as genai
 # Local env ONLY
 #from dotenv import load_dotenv, find_dotenv
 
@@ -20,10 +21,15 @@ os.environ["GLOG_minloglevel"] = "2"
 
 # Streamlit cloud
 GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=GOOGLE_API_KEY)
 
 # Initialize the Gemini model and embeddings
-Settings.llm = Gemini(model='models/gemini-2.0-flash-exp', api_key=GOOGLE_API_KEY)
+# Local env ONLY
+#Settings.llm = Gemini(model='models/gemini-2.0-flash-exp', api_key=GOOGLE_API_KEY)
+# Streamlit cloud
+Settings.llm = Gemini(model='models/gemini-2.0-flash-exp')
 Settings.embed_model = GeminiEmbedding()
+st.write("Initialization successful.")
 
 # Set up Streamlit app
 st.title("💬 Chat with My AI Assistant")
@@ -78,11 +84,20 @@ with st.sidebar:
     st.caption(f"© Made by {full_name} 2025. All rights reserved.")
 
 # Load documents and build the index
+if os.path.exists("data") and os.listdir("data"):
+    st.write("Data directory exists and contains files.")
+else:
+    st.write("Data directory is missing or empty.")
 with st.spinner("Initiating the AI assistant. Please hold..."):
-    path = "data"
-    reader = SimpleDirectoryReader(path, recursive=True)
-    documents = reader.load_data()
-    index = GPTVectorStoreIndex.from_documents(documents)
+    try:
+        path = "data"
+        reader = SimpleDirectoryReader(path, recursive=True)
+        documents = reader.load_data()
+        index = GPTVectorStoreIndex.from_documents(documents)
+        st.success("Index built successfully.")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+        st.exception(e)
 
 def ask_bot(user_query):
     global index
