@@ -26,7 +26,7 @@ os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 os.environ["GEMINI_API_KEY"] = GOOGLE_API_KEY
 
 # Initialize the Gemini model and embeddings
-Settings.llm = Gemini(model='models/gemini-2.0-flash-exp')
+Settings.llm = Gemini(model='models/gemini-2.5-flash-lite')
 
 Settings.embed_model = GeminiEmbedding()
 
