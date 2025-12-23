@@ -7,19 +7,19 @@ from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.core import SimpleDirectoryReader, GPTVectorStoreIndex
 
 # Local env ONLY
-#from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 # Local env ONLY
-#_ = load_dotenv(find_dotenv())  # read local .env file
+_ = load_dotenv(find_dotenv())  # read local .env file
 
 # Suppress logging warnings
 os.environ["GRPC_VERBOSITY"] = "ERROR"
 os.environ["GLOG_minloglevel"] = "2"
 
 # Local env ONLY
-#GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
+GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
 # Streamlit cloud
-GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
+#GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
 
 # Set the Google and Gemini API key
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
@@ -28,7 +28,7 @@ os.environ["GEMINI_API_KEY"] = GOOGLE_API_KEY
 # Initialize the Gemini model and embeddings
 Settings.llm = Gemini(model='models/gemini-2.5-flash-lite')
 
-Settings.embed_model = GeminiEmbedding()
+Settings.embed_model = GeminiEmbedding(model_name="models/text-embedding-004")
 
 # Set up Streamlit app
 st.title("💬 Chat with My AI Assistant")
@@ -82,18 +82,32 @@ with st.sidebar:
 
     st.caption(f"© Made by {full_name} 2025. All rights reserved.")
 
-# Load documents and build the index
-if not os.path.exists("data") or not os.listdir("data"):
-    st.write("Data directory is missing or empty.")
-with st.spinner("Initiating the AI assistant. Please hold..."):
-    try:
-        path = "data"
-        reader = SimpleDirectoryReader(path, recursive=True)
-        documents = reader.load_data()
-        index = GPTVectorStoreIndex.from_documents(documents)
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-        st.exception(e)
+# Create a cached function so the index is only built once
+@st.cache_resource(show_spinner=False)
+def load_data():
+    with st.spinner("Initiating the AI assistant. Please hold..."):
+        try:
+            if not os.path.exists("data") or not os.listdir("data"):
+                st.error("Data directory is missing or empty.")
+                return None
+            
+            path = "data"
+            reader = SimpleDirectoryReader(path, recursive=True)
+            documents = reader.load_data()
+            
+            # This API call will now happen only ONCE per session
+            index = GPTVectorStoreIndex.from_documents(documents)
+            return index
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
+            return None
+
+# Load the index
+index = load_data()
+
+# Stop execution if index failed to load
+if index is None:
+    st.stop()
 
 def ask_bot(user_query):
     global index
