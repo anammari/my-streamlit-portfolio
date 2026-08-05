@@ -5,9 +5,6 @@
 __init__.py
 __pycache__
 
-# Test files
-tests/*
-
 # virtual environment
 myenv
 

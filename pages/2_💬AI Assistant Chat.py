@@ -1,34 +1,30 @@
 import os
 import streamlit as st
+import numpy as np
+from openai import OpenAI
+from dotenv import load_dotenv, find_dotenv
 from utils.constants import *
-from llama_index.core import Settings
-from llama_index.llms.gemini import Gemini
-from llama_index.embeddings.gemini import GeminiEmbedding
-from llama_index.core import SimpleDirectoryReader, GPTVectorStoreIndex
 
-# Local env ONLY
-#from dotenv import load_dotenv, find_dotenv
-
-# Local env ONLY
-#_ = load_dotenv(find_dotenv())  # read local .env file
+# Load local .env file (no-op if running on Streamlit Cloud)
+load_dotenv(find_dotenv())
 
 # Suppress logging warnings
 os.environ["GRPC_VERBOSITY"] = "ERROR"
 os.environ["GLOG_minloglevel"] = "2"
 
-# Local env ONLY
-# GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
-# Streamlit cloud
-GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
+# Resolve API key: local .env first, then Streamlit Cloud secrets
+api_key = os.getenv("OPENROUTER_API_KEY")
+if not api_key:
+    api_key = st.secrets["OPENROUTER_API_KEY"]
 
-# Set the Google and Gemini API key
-os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
-os.environ["GEMINI_API_KEY"] = GOOGLE_API_KEY
+# OpenRouter client (OpenAI-compatible)
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=api_key,
+)
 
-# Initialize the Gemini model and embeddings
-Settings.llm = Gemini(model='models/gemini-2.5-flash-lite')
-
-Settings.embed_model = GeminiEmbedding(model_name="models/text-embedding-004")
+EMBED_MODEL = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
+LLM_MODEL = "openai/gpt-oss-20b:free"
 
 # Set up Streamlit app
 st.title("💬 Chat with My AI Assistant")
@@ -58,7 +54,7 @@ with st.sidebar:
     with st.expander("Click here to see FAQs"):
         st.info(
             f"""
-            - Tell me a brief about {name}. 
+            - Tell me a brief about {name}.
             - What does {subject} currently work?
             - What are {pronoun} strengths and weaknesses?
             - What is {pronoun} latest project?
@@ -82,47 +78,113 @@ with st.sidebar:
 
     st.caption(f"© Made by {full_name} 2025. All rights reserved.")
 
+
+def cosine_similarity(a, b):
+    """Compute cosine similarity between two vectors."""
+    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+
+def embed_text(text):
+    """Embed a single text string via OpenRouter and return the embedding vector."""
+    response = client.embeddings.create(
+        model=EMBED_MODEL,
+        input=text,
+        encoding_format="float",
+    )
+    return response.data[0].embedding
+
+
+def chunk_text(text, chunk_size=500, overlap=50):
+    """Split text into overlapping chunks of approximately chunk_size characters."""
+    words = text.split()
+    chunks = []
+    start = 0
+    while start < len(words):
+        end = start + chunk_size
+        chunk = " ".join(words[start:end])
+        chunks.append(chunk)
+        start += chunk_size - overlap
+    return chunks
+
+
 # Create a cached function so the index is only built once
 @st.cache_resource(show_spinner=False)
-def load_data():
+def build_index():
     with st.spinner("Initiating the AI assistant. Please hold..."):
         try:
             if not os.path.exists("data") or not os.listdir("data"):
                 st.error("Data directory is missing or empty.")
                 return None
-            
-            path = "data"
-            reader = SimpleDirectoryReader(path, recursive=True)
-            documents = reader.load_data()
-            
-            # This API call will now happen only ONCE per session
-            index = GPTVectorStoreIndex.from_documents(documents)
-            return index
+
+            # Read the bio file
+            bio_path = os.path.join("data", "bio.txt")
+            with open(bio_path, "r", encoding="utf-8") as f:
+                text = f.read()
+
+            # Split into chunks
+            chunks = chunk_text(text)
+
+            # Embed each chunk
+            index_data = []
+            for chunk in chunks:
+                embedding = embed_text(chunk)
+                index_data.append({"text": chunk, "embedding": embedding})
+
+            return index_data
         except Exception as e:
             st.error(f"An error occurred: {e}")
             return None
 
+
+def retrieve(query, index, top_k=3):
+    """Retrieve the top_k most relevant chunks for a query."""
+    query_embedding = embed_text(query)
+    scored = []
+    for item in index:
+        score = cosine_similarity(query_embedding, item["embedding"])
+        scored.append((score, item["text"]))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [text for _, text in scored[:top_k]]
+
+
 # Load the index
-index = load_data()
+index = build_index()
 
 # Stop execution if index failed to load
 if index is None:
     st.stop()
 
+
 def ask_bot(user_query):
-    global index
+    """Generate a response using RAG: retrieve relevant context and query the LLM."""
+    # Retrieve relevant chunks
+    relevant_chunks = retrieve(user_query, index)
 
-    PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting {name} in {pronoun} job search by providing recruiters with relevant information about {pronoun} qualifications and achievements. 
-    Your goal is to support {name} in presenting {pronoun} self effectively to potential employers and promoting {pronoun} candidacy for job opportunities.
-    If you do not know the answer, politely admit it and let recruiters know how to contact {name} to get more information directly from {pronoun}. 
-    Don't put "Buddy" or a breakline in the front of your answer.
-    Human: {input}
-    """
+    # Build context from retrieved chunks
+    context = "\n\n".join(relevant_chunks)
 
-    # Query the index for the AI's response
-    query_engine = index.as_query_engine()
-    response = query_engine.query(PROMPT_QUESTION.format(name=name, pronoun=pronoun, input=user_query))
-    return response
+    system_prompt = f"""You are Buddy, an AI assistant dedicated to assisting {name} in {pronoun} job search by providing recruiters with relevant information about {pronoun} qualifications and achievements.
+Your goal is to support {name} in presenting {pronoun} self effectively to potential employers and promoting {pronoun} candidacy for job opportunities.
+If you do not know the answer, politely admit it and let recruiters know how to contact {name} to get more information directly from {pronoun}.
+Don't put "Buddy" or a breakline in the front of your answer.
+
+Use the following context to answer the question:
+
+{context}"""
+
+    # Call OpenRouter chat completions
+    response = client.chat.completions.create(
+        model=LLM_MODEL,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_query},
+        ],
+        temperature=0.7,
+        max_tokens=512,
+    )
+
+    return response.choices[0].message.content
+
 
 # After the user enters a message, append that message to the message history
 if prompt := st.chat_input("Your question"):  # Prompt for user input and save to chat history
@@ -138,8 +200,8 @@ if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("🤔 Thinking..."):
             response = ask_bot(prompt)
-            st.write(response.response)
-            message = {"role": "assistant", "content": response.response}
+            st.write(response)
+            message = {"role": "assistant", "content": response}
             st.session_state.messages.append(message)  # Add response to message history
 
 # Suggested questions
@@ -154,7 +216,7 @@ def send_button_ques(question):
     st.session_state.disabled = True
     response = ask_bot(question)
     st.session_state.messages.append({"role": "user", "content": question})  # display the user's message first
-    st.session_state.messages.append({"role": "assistant", "content": response.response})  # display the AI message afterwards
+    st.session_state.messages.append({"role": "assistant", "content": response})  # display the AI message afterwards
 
 if 'button_question' not in st.session_state:
     st.session_state['button_question'] = ""

@@ -1,11 +1,10 @@
-llama-index
-llama-index-llms-gemini
-llama-index-embeddings-gemini
+openai>=1.12.0
+numpy
 streamlit==1.41.1
 streamlit-option-menu==0.1.2
 streamlit-extras
 streamlit-lottie==0.0.5
 streamlit-timeline==0.0.2
 python-dotenv
-grpcio==1.60.1
-google-generativeai
+pytest
+pytest-mock

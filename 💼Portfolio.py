@@ -196,8 +196,26 @@ with st.container():
 with st.container():
     st.markdown("""""")
     st.subheader('✍️ SlideShare')
-    col1,col2 = st.columns([0.95, 0.05])
-    components.html(embed_rss['rss'],height=300)
+    slides = slides  # from constants.py
+
+    def display_slide(col, slide):
+        with col:
+            st.markdown(
+                f'<a href="{slide["url"]}" target="_blank">'
+                f'<img src="{slide["thumbnail"]}" style="width:100%;height:auto;border-radius:8px;"></a>',
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f'<p style="font-size: 14px; font-weight: bold; margin-top: 4px;">{slide["title"]}</p>'
+                f'<p style="font-size: 12px; color: #666;">{slide["slides"]} slides · {slide["views"]} views</p>',
+                unsafe_allow_html=True,
+            )
+
+    # Display slides in a 3-column grid
+    cols = st.columns(3)
+    for i, slide in enumerate(slides):
+        display_slide(cols[i % 3], slide)
+
     st.markdown(""" <a href="{}"> <em>👀 Click here to see more</em></a>""".format(info['Medium']), unsafe_allow_html=True)
 
 st.write("---")

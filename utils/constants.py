@@ -38,8 +38,8 @@ info = {
    "Subject": "he", 
    "Name": "Ahmad",
    "Full_Name":"Ahmad Ammari", 
-   "Intro": "A Data Analytics Professional and Educator",
-   "About":"Hi there! I'm Ahmad, a Data Scientist and Analytics Instructor with 11+ years of experience uncovering actionable insights from complex datasets. My expertise spans NLP, data visualization, and machine learning, utilizing tools like Python, Azure ML, and Power BI. Passionate about bridging the gap between data and understanding, I also share my knowledge through teaching and mentorship.",
+   "Intro": "An AI Engineer and Data Scientist",
+   "About":"Hi there! I'm Ahmad, an AI Engineer and Data Scientist with 13+ years of experience architecting AI-powered solutions and uncovering actionable insights from complex datasets. My expertise spans Generative AI, LLMs, agentic AI workflows, RAG systems, and cloud-based ML engineering, utilizing tools like Python, Temporal.io, and Azure. Passionate about pushing the boundaries of AI-driven innovation, I also share my knowledge through teaching and mentorship.",
    "Project":"https://www.linkedin.com/in/ahmadammari/",
    "Medium":"https://www.slideshare.net/anammari/presentations",
    "Tableau":"https://shortit.me/4sf62",
@@ -98,17 +98,17 @@ endorsements = {
 
 embed_rss= {
     'rss':"""
-    <div style="overflow-y: scroll; height:300px; background-color:white;"> 
-        <div id="retainable-rss-embed" 
+    <div style="overflow-y: scroll; height:300px; background-color:white;">
+        <div id="retainable-rss-embed"
             data-rss="https://www.slideshare.net/rss/user/anammari"
-            data-maxcols="3" 
+            data-maxcols="3"
             data-layout="grid"
-            data-poststyle="inline" 
-            data-readmore="Read the rest" 
-            data-buttonclass="btn btn-primary" 
+            data-poststyle="inline"
+            data-readmore="Read the rest"
+            data-buttonclass="btn btn-primary"
             data-offset="0">
         </div>
-    </div> 
+    </div>
     <script src="https://www.twilik.com/assets/retainable/rss-embed/retainable-rss-embed.js"></script>
     <style>
         #retainable-rss-embed img {
@@ -118,3 +118,55 @@ embed_rss= {
     </style>
     """
 }
+
+slides = [
+    {
+        "title": "Distributed Data Mining",
+        "url": "https://www.slideshare.net/slideshow/distributed-data-mining/10559489",
+        "thumbnail": "https://image.slidesharecdn.com/distributeddataminingv1-111212063147-phpapp01/85/Distributed-data-mining-1-320.jpg",
+        "slides": 36,
+        "views": "2.1K"
+    },
+    {
+        "title": "Blog Clustering and Community Discovery in the Blogosphere",
+        "url": "https://www.slideshare.net/slideshow/blog-clustering/10514997",
+        "thumbnail": "https://image.slidesharecdn.com/blogclusteringv1-111208075021-phpapp01/85/Blog-clustering-1-320.jpg",
+        "slides": 24,
+        "views": "1.1K"
+    },
+    {
+        "title": "YouTube Group Profiling Services",
+        "url": "https://www.slideshare.net/slideshow/you-tube-groupprofilingservices/10099877",
+        "thumbnail": "https://image.slidesharecdn.com/youtubegroupprofilingservices-111110012821-phpapp01/85/You-tube-Group-Profiling-Services-1-320.jpg",
+        "slides": 17,
+        "views": "1K"
+    },
+    {
+        "title": "AUM Workshop Paper Presentation",
+        "url": "https://www.slideshare.net/slideshow/aum-workshop-paperpresentation/10086941",
+        "thumbnail": "https://image.slidesharecdn.com/aumworkshoppaperpresentation-111109074502-phpapp02/85/Aum-workshop-paper_presentation-1-320.jpg",
+        "slides": 22,
+        "views": 434
+    },
+    {
+        "title": "Itecn453 Lec01",
+        "url": "https://www.slideshare.net/slideshow/itecn453-lec01/16497976",
+        "thumbnail": "https://image.slidesharecdn.com/itecn453lec01-130212232952-phpapp01/85/Itecn453-lec01-1-320.jpg",
+        "slides": 21,
+        "views": 392
+    },
+    {
+        "title": "CIS 2303 LO1 Part 1 - Student Version",
+        "url": "https://www.slideshare.net/slideshow/cis-2303-lo1-part-1weeks12-student-ver/16480606",
+        "thumbnail": "https://image.slidesharecdn.com/cis2303lo1part1weeks12-studentver-130211235434-phpapp01/85/Cis-2303-lo1-part-1_weeks_1_2-student-ver-1-320.jpg",
+        "slides": 29,
+        "views": "1.2K"
+    },
+    {
+        "title": "Itec410 Lec01",
+        "url": "https://www.slideshare.net/slideshow/itec410-lec01/16468024",
+        "thumbnail": "https://image.slidesharecdn.com/itec410lec01-130211072644-phpapp02/85/Itec410-lec01-1-320.jpg",
+        "slides": 18,
+        "views": 804
+    }
+]

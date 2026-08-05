@@ -13,6 +13,38 @@
     "events": [
         {
             "media": {
+                "url": "https://i.imgur.com/OquzJNK.jpg",
+                "caption": "Future Secure AI, NSW, Australia"
+            },
+            "start_date": {
+                "year": "2026"
+            },
+            "end_date": {
+                "year": "2026"
+            },
+            "text": {
+                "headline": "Senior AI Engineer (Data Science)",
+                "text": "<ul><li>Architecting Agentic AI Pipelines: Design stateful multi-agent workflows using Temporal.io, TypeScript, and Python to power autonomous AI coworker systems.</li><li>Engineering Agentic Coding Workflows: Built high-velocity development pipelines integrating Claude Code, Model Context Protocol (MCP) servers, and custom agent skills to accelerate codebase manipulation and context-aware tool use.</li></ul>"
+            }
+        },
+        {
+            "media": {
+                "url": "https://i.imgur.com/D9HnTAC.jpg",
+                "caption": "University of New England, Armidale, Australia"
+            },
+            "start_date": {
+                "year": "2025"
+            },
+            "end_date": {
+                "year": "2026"
+            },
+            "text": {
+                "headline": "Senior Analyst and Data Scientist",
+                "text": "<ul><li>Designed, developed, and deployed data analysis, data science, and machine learning solutions to meet academic and professional analytical needs.</li><li>Leveraged Oracle SQL, MS Fabric, and PowerBI to build back-end and front-end solutions.</li></ul>"
+            }
+        },
+        {
+            "media": {
                 "url": "https://i.imgur.com/bbLDwtJ.jpg",
                 "caption": "Kaplan Higher Education, Melbourne, Australia"
             },
