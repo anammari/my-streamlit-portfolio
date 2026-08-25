@@ -8,7 +8,7 @@ A Streamlit-based personal portfolio website for Ahmad Ammari, featuring a main 
 
 - **Framework**: Streamlit 1.41.1
 - **AI Chat**: OpenRouter (OpenAI-compatible API) — RAG with in-memory vector search
-- **LLM**: `openai/gpt-oss-20b:free` via OpenRouter
+- **LLM**: `nvidia/nemotron-3-ultra-550b-a55b:free` via OpenRouter
 - **Embeddings**: `nvidia/llama-nemotron-embed-vl-1b-v2:free` via OpenRouter
 - **Styling**: Custom CSS (`style/styles_main.css`, `style/styles_chat.css`)
 - **Animations**: Lottie JSON animations (`lottie/`)
@@ -72,7 +72,7 @@ The RAG source document. Contains: About, Current/Past Work Experience, Projects
 4. Chunks and their embeddings are stored in memory as the index
 5. User query is embedded the same way, then cosine similarity finds the top-3 most relevant chunks
 6. Retrieved chunks are injected into a system prompt as context
-7. The system prompt + user query are sent to OpenRouter's `openai/gpt-oss-20b:free` for answer generation
+7. The system prompt + user query are sent to OpenRouter's `nvidia/nemotron-3-ultra-550b-a55b:free` for answer generation
 8. Chat history is maintained in `st.session_state.messages`
 
 ## Dependencies (requirements.txt)

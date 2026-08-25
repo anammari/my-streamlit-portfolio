@@ -19,7 +19,7 @@ A personal portfolio website built with **Streamlit** — featuring an interacti
 | Layer | Technology |
 |-------|-----------|
 | **Framework** | Streamlit |
-| **AI Chat** | OpenRouter (`openai/gpt-oss-20b:free` + `nvidia/llama-nemotron-embed-vl-1b-v2:free`) |
+| **AI Chat** | OpenRouter (`nvidia/nemotron-3-ultra-550b-a55b:free` + `nvidia/llama-nemotron-embed-vl-1b-v2:free`) |
 | **RAG** | In-memory vector search with cosine similarity |
 | **Styling** | Custom CSS |
 | **Animations** | Lottie JSON |
