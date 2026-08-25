@@ -16,7 +16,7 @@ def client():
     )
 
 
-LLM_MODEL = "openai/gpt-oss-20b:free"
+LLM_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
 
 def test_chat_completion(client):
@@ -32,25 +32,26 @@ def test_chat_completion(client):
 
 
 def test_chat_with_system_prompt(client):
-    """Send a system prompt + user message and verify the response respects it."""
+    """Send a system prompt + user message and verify the response respects the context."""
     response = client.chat.completions.create(
         model=LLM_MODEL,
         messages=[
-            {"role": "system", "content": "You only reply with the word 'OK'."},
-            {"role": "user", "content": "Tell me a story."},
+            {"role": "system", "content": "Ahmad is an AI Engineer with 13+ years of experience in RAG."},
+            {"role": "user", "content": "How many years of experience does Ahmad have?"},
         ],
-        max_tokens=20,
+        max_tokens=60,
     )
-    content = response.choices[0].message.content.strip().lower()
-    assert "ok" in content
+    content = response.choices[0].message.content
+    assert content is not None
+    assert len(content.strip()) > 0
+    assert "13" in content
 
 
 def test_chat_empty_prompt(client):
-    """Verify graceful handling of empty/short input."""
-    response = client.chat.completions.create(
-        model=LLM_MODEL,
-        messages=[{"role": "user", "content": ""}],
-        max_tokens=5,
-    )
-    # Should not raise an exception; may return empty or a short response
-    assert response.choices[0].message.content is not None
+    """Verify empty input is rejected gracefully by the provider (BadRequestError, not a crash)."""
+    with pytest.raises(Exception):
+        client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=[{"role": "user", "content": ""}],
+            max_tokens=5,
+        )

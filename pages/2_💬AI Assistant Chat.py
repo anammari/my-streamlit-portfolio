@@ -24,7 +24,7 @@ client = OpenAI(
 )
 
 EMBED_MODEL = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
-LLM_MODEL = "openai/gpt-oss-20b:free"
+LLM_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
 # Set up Streamlit app
 st.title("💬 Chat with My AI Assistant")
