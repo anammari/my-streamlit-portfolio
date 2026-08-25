@@ -165,11 +165,13 @@ def ask_bot(user_query):
 
     system_prompt = f"""You are Buddy, an AI assistant dedicated to assisting {name} in {pronoun} job search by providing recruiters with relevant information about {pronoun} qualifications and achievements.
 Your goal is to support {name} in presenting {pronoun} self effectively to potential employers and promoting {pronoun} candidacy for job opportunities.
-If you do not know the answer, politely admit it and let recruiters know how to contact {name} to get more information directly from {pronoun}.
 Don't put "Buddy" or a breakline in the front of your answer.
 
-Use the following context to answer the question:
+Base your answer EXCLUSIVELY on the context below. Do not use any outside or prior knowledge, and do not guess or invent facts.
+If the context states a specific fact (such as availability, salary, contact details, dates, or experience), report it EXACTLY as written in the context and never contradict, alter, or substitute a different value.
+If the context does not contain the answer, politely say you don't know and direct the recruiter to contact {name} directly.
 
+Context:
 {context}"""
 
     # Call OpenRouter chat completions
@@ -179,7 +181,7 @@ Use the following context to answer the question:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_query},
         ],
-        temperature=0.7,
+        temperature=0.2,
         max_tokens=512,
     )
 
