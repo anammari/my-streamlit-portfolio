@@ -101,15 +101,32 @@ header {visibility: hidden;}
   text-align: center;
 }
 
-/*chatbot*/
+/*chatbot
+  Blue assistant bubbles with consistently white text on every nested element
+  (lists, bold, code, headings). Uses Streamlit's stable data-testid hooks so
+  it keeps working across Streamlit versions, plus the version-specific
+  emotion class as a fallback. */
 .css-4oy321, .st-emotion-cache-4oy321 {
   background-color: #0c43bc;
 } /*  #0a3696 */
-.css-4oy321 p, .st-emotion-cache-4oy321 p, .css-4oy321 ol, .st-emotion-cache-4oy321 ol{
-  color: #fafafa;
+
+/* Assistant messages: blue bubble */
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarAssistant"]) {
+  background-color: #0c43bc;
 }
-.css-4oy321 p a, .st-emotion-cache-4oy321 p a {
-  color: lightgreen;
+
+/* All text inside the assistant bubble is white */
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarAssistant"])
+  [data-testid="stChatMessageContent"],
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarAssistant"])
+  [data-testid="stChatMessageContent"] * {
+  color: #ffffff !important;
+}
+
+/* Keep links readable (light green) on the blue bubble */
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarAssistant"])
+  [data-testid="stChatMessageContent"] a {
+  color: lightgreen !important;
 }
 
 

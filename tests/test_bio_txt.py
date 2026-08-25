@@ -52,3 +52,15 @@ def test_bio_does_not_contain_old_years():
     """Verify bio.txt no longer mentions 11 or 12 years."""
     content = _read_bio()
     assert "11+" not in content
+
+
+def test_bio_contains_one_week_availability():
+    """Verify bio.txt states availability within one week of an offer."""
+    content = _read_bio()
+    assert "within one week" in content
+
+
+def test_bio_does_not_contain_four_weeks_availability():
+    """Verify bio.txt no longer states the old four-week availability."""
+    content = _read_bio()
+    assert "within four weeks" not in content
