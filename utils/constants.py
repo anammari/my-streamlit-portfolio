@@ -88,6 +88,27 @@ projects = [
         }                  
     ]
 
+youtube_playlists = [
+    {
+        "title": "Channel Overview & Personal Portfolio",
+        "url": "https://www.youtube.com/playlist?list=PLVAPEk6WWNKs",
+        "image_url": "https://i.imgur.com/vmquzQR.jpg",
+        "description": "Welcome to Ahmad Builds AI! 🚀 In this playlist, explore my interactive portfolio, background as a Senior AI Engineer & Data Scientist, and a overview of the practical AI, ML, and agentic systems built on this channel."
+    },
+    {
+        "title": "Core Machine Learning & Data Science",
+        "url": "https://www.youtube.com/playlist?list=PLYWafsyNWSAc",
+        "image_url": "https://i.imgur.com/cZYb8fm.jpg",
+        "description": "Master fundamental concepts and practical workflows in Machine Learning, Data Analytics, and Data Science 📊. This playlist features hands-on guides, real-world examples, and step-by-step breakdowns of essential algorithms, evaluation metrics, and dashboarding techniques 🧠."
+    },
+    {
+        "title": "AI Assistant & Agent Development",
+        "url": "https://www.youtube.com/playlist?list=PLDh2PWHO3qbg",
+        "image_url": "https://i.imgur.com/HazsCcJ.jpg",
+        "description": "Build, orchestrate, and deploy production-ready AI assistants and autonomous LLM agents 🤖⚡. This playlist covers hands-on tutorials on agentic workflows, multi-agent architectures, model-neutral development, and tools like OpenCode, OpenRouter, and Temporal Python 🧠💻"
+    }
+]
+
 endorsements = {
     "img1": "https://i.imgur.com/Nrrm87R.png",
     "img2": "https://i.imgur.com/rLZvEl3.png",

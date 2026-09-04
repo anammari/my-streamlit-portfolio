@@ -1,6 +1,6 @@
 """Tests for the updated constants in utils/constants.py."""
 
-from utils.constants import info, projects
+from utils.constants import info, projects, youtube_playlists
 
 
 def test_info_about_updated():
@@ -32,3 +32,18 @@ def test_projects_list_structure():
 def test_projects_count():
     """Verify the expected number of projects."""
     assert len(projects) == 6
+
+
+def test_youtube_playlists_structure():
+    """Verify youtube_playlists list has the expected structure."""
+    assert len(youtube_playlists) > 0
+    for playlist in youtube_playlists:
+        assert "title" in playlist
+        assert "url" in playlist
+        assert "image_url" in playlist
+        assert "description" in playlist
+
+
+def test_youtube_playlists_count():
+    """Verify the expected number of playlists."""
+    assert len(youtube_playlists) == 3

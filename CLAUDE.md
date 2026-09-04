@@ -20,12 +20,12 @@ A Streamlit-based personal portfolio website for Ahmad Ammari, featuring a main 
 
 ```
 my-streamlit-portfolio/
-├── 💼Portfolio.py                  # Main portfolio page (hero, projects, skills, timeline, PowerBI, SlideShare, endorsements, contact)
+├── 💼Portfolio.py                  # Main portfolio page (hero, projects, My YouTube Channel, skills, timeline, PowerBI, SlideShare, endorsements, contact)
 ├── pages/
 │   ├── 2_💬AI Assistant Chat.py    # AI chat page — RAG over bio.txt via OpenRouter
 │   └── 3_📄Resume.py              # Resume viewer (PDF from images/resume.pdf)
 ├── utils/
-│   └── constants.py               # All config: info dict, projects list, endorsements, slides list
+│   └── constants.py               # All config: info dict, projects list, youtube_playlists list, endorsements, slides list
 ├── data/
 │   └── bio.txt                     # RAG source document for AI chat
 ├── images/
@@ -48,7 +48,7 @@ my-streamlit-portfolio/
 ## Key Files
 
 ### `💼Portfolio.py`
-Main entry point. Sections: Hero + About, Project Showcase (6 projects from constants.py), Skills (Lottie icons), Career History (timeline from work_history.json), PowerBI Dashboard (iframe), SlideShare (curated slide grid from constants.py), Coworker Endorsements (image slideshow), Contact Form (formsubmit.co).
+Main entry point. Sections: Hero + About, Project Showcase (6 projects from constants.py), My YouTube Channel (3 playlists in a single-row grid, each opening the matching YouTube playlist in a new tab), Skills (Lottie icons), Career History (timeline from work_history.json), PowerBI Dashboard (iframe), SlideShare (curated slide grid from constants.py), Coworker Endorsements (image slideshow), Contact Form (formsubmit.co).
 
 ### `pages/2_💬AI Assistant Chat.py`
 RAG chatbot using OpenRouter (OpenAI-compatible API). Loads `data/bio.txt` → splits into chunks → embeds via OpenRouter → stores in-memory index. On query: embeds query, finds top-3 similar chunks via cosine similarity, sends context + query to OpenRouter chat completions.
@@ -57,6 +57,7 @@ RAG chatbot using OpenRouter (OpenAI-compatible API). Loads `data/bio.txt` → s
 Central config file containing:
 - `info` dict: Name, Intro, About, links (Project, Medium/SlideShare, Tableau/PowerBI, ScreenPal, Resume, Email)
 - `projects` list: 6 project entries with title, description, image_url, link
+- `youtube_playlists` list: 3 YouTube playlists with title, url, image_url, description
 - `slides` list: 7 curated SlideShare entries with title, url, thumbnail, slides, views
 - `endorsements` dict: 5 image URLs for the slideshow
 - `chat` dict: Menu styling configs
@@ -103,7 +104,7 @@ python -m pytest tests/ -v
 
 | Test File | What It Tests |
 |-----------|---------------|
-| `tests/test_constants.py` | Updated About/Intro text, projects structure |
+| `tests/test_constants.py` | Updated About/Intro text, projects structure, youtube_playlists structure/count |
 | `tests/test_bio_txt.py` | bio.txt contains new roles, skills, 13+ years |
 | `tests/test_slideshare.py` | Curated slide list structure and URL validity |
 | `tests/test_rag_pipeline.py` | chunk_text, cosine_similarity, retrieve, mocked ask_bot |

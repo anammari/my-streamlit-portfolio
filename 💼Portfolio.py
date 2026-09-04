@@ -133,6 +133,28 @@ with st.container():
             if i + j < len(projects):  # Check if project index is within range
                 display_project(col, projects[i + j])
 st.markdown("""<a href="{}"><em>👀 Click here to see more</em></a>""".format(info['Project']), unsafe_allow_html=True)
+
+# ----------------- youtube channel ----------------- #
+with st.container():
+    st.write("---")
+    st.subheader('📺 My YouTube Channel')
+
+    youtube_playlists = youtube_playlists
+
+    def display_playlist(col, playlist):
+        with col:
+            st.markdown(
+                f'<a href="{playlist["url"]}" target="_blank" class="portfolio-item" data-id="3">'
+                f'<img src="{playlist["image_url"]}" style="width:100%;height:auto;"></a>',
+                unsafe_allow_html=True,
+            )
+            st.markdown(f'<p style="font-size: 16px; font-weight: bold;">{playlist["title"]}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p style="font-size: 14px">{playlist["description"]}</p>', unsafe_allow_html=True)
+
+    # exactly 3 playlists -> single row of 3 columns
+    cols = st.columns(3)
+    for i, playlist in enumerate(youtube_playlists):
+        display_playlist(cols[i % 3], playlist)
     
 # ----------------- skillset ----------------- #
 with st.container():

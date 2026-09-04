@@ -8,7 +8,7 @@ A personal portfolio website built with **Streamlit** — featuring an interacti
 
 ## ✨ Features
 
-- **Portfolio Page** — Hero section, project showcase, skills with animations, career timeline, PowerBI dashboard, SlideShare gallery, coworker endorsements, and a contact form
+- **Portfolio Page** — Hero section, project showcase, **My YouTube Channel** (3 playlists in a single-row grid, each opening the playlist in a new tab), skills with animations, career timeline, PowerBI dashboard, SlideShare gallery, coworker endorsements, and a contact form
 - **AI Assistant Chat** — Ask questions about my background, skills, experience, and projects. Powered by a free OpenRouter LLM with RAG over my bio document
 - **Resume Viewer** — In-browser PDF viewer
 
@@ -36,7 +36,7 @@ my-streamlit-portfolio/
 ├── pages/
 │   ├── 2_💬AI Assistant Chat.py  # AI chat with RAG
 │   └── 3_📄Resume.py             # Resume PDF viewer
-├── utils/constants.py             # All config (projects, slides, etc.)
+├── utils/constants.py             # All config (projects, slides, youtube_playlists, etc.)
 ├── data/bio.txt                   # RAG source document for AI chat
 ├── images/                        # Profile photo + resume PDF
 ├── style/                         # Custom CSS files
